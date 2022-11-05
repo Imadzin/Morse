@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Morse
 {
-    internal class Dic
+    public class Dic
     {
-        string[] N_abeceda = {
+       public static string[] N_abeceda = {
             "a",
+            "b",
             "c",
             "d",
             "e",
@@ -48,9 +49,11 @@ namespace Morse
             ",",
             "?",
             "!", 
+            " ",
+            
         };
 
-        string[] M_abeceda={
+       public static string[] M_abeceda={
             ".-",
             "-...",
             "-.-.",
@@ -91,6 +94,8 @@ namespace Morse
             "--..--",
             "..--..",
             "-.-.--",
+            ""
+            
         };
 
 
