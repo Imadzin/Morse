@@ -45,6 +45,12 @@ namespace Morse
 
         public static void ZMorse(string txt)
         {
+            for (int i = 0; i < txt.Length; i++)
+            {
+                
+            }
+
+
 
         }
 
