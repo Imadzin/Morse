@@ -4,18 +4,12 @@
     {
         static void Main(string[] args)
         {
-           
             while (true)
             {
+                Config.ConfigTest();
+                Config.ConfigLoad();
                 Menu();
-            }
-
-            
-            
-            
-            
-            
-            
+            }   
         }
 
 
