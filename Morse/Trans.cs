@@ -29,7 +29,7 @@ namespace Morse
               
 
             char prvniPismeno = txt[0];
-          
+
 
 
             if (prvniPismeno == '.' || prvniPismeno == '-')
@@ -45,12 +45,22 @@ namespace Morse
 
         public static void ZMorse(string txt)
         {
-            for (int i = 0; i < txt.Length; i++)
+            string[] letters = txt.Split('/');
+
+            string output = "";
+
+            for (var i = 0; i < letters.Length; i++)
             {
-                
+                int index = Array.IndexOf(Dic.M_abeceda, letters[i]);
+
+                if (index == -1) continue; 
+                    
+                output += Dic.N_abeceda[index];
             }
 
-
+            Console.WriteLine(output.Trim());
+            Console.ReadKey();
+            Start();
 
         }
 
