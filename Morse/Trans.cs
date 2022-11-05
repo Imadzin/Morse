@@ -68,6 +68,8 @@ namespace Morse
 
         public static void DoMorse(string txt)
         {
+
+            string output = "";
             Console.WriteLine();
 
 
@@ -84,17 +86,24 @@ namespace Morse
                 }while(fragment != Dic.N_abeceda[index]);
 
                 Console.Write(Dic.M_abeceda[index]);
+                output += Dic.M_abeceda[index];
                 Console.Write("/");
-
+                output += "/";
             }
 
+           
+
             Console.WriteLine("//");
+            if (Config.pipani == true)
+            {
+                Beeper.Pipani(output);
+            }
+
             Console.ReadKey();
             Start();
 
         }
 
-        
 
     }
 }
