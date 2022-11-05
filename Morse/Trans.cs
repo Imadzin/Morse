@@ -24,7 +24,7 @@ namespace Morse
             
 
             char prvniPismeno = txt[0];
-            char druhePismeno = txt[1];
+          
 
 
             if (prvniPismeno == '.' || prvniPismeno == '-')
