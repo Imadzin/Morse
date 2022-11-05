@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Morse
 {
     internal class Trans
@@ -20,6 +21,8 @@ namespace Morse
 
         public static void Sort(String txt)
         {
+            
+
             char prvniPismeno = txt[0];
             char druhePismeno = txt[1];
 
