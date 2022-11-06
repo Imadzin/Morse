@@ -94,10 +94,8 @@ namespace Morse
            
 
             Console.WriteLine("//");
-            if (Config.pipani == true)
-            {
-                Beeper.Pipani(output);
-            }
+             Beeper.Pipani(output);
+            
 
             Console.ReadKey();
             Start();

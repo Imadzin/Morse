@@ -13,6 +13,11 @@ namespace Morse
         {
             int index = 0;
 
+            if (Config.pipani == true)
+            {
+
+            
+
 
             do
             {
@@ -53,6 +58,8 @@ namespace Morse
                 
 
             }while (index !=kod.Length);
+
+            }
         }
 
 

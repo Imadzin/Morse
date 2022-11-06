@@ -50,7 +50,7 @@
                     break;
 
                 case 2:
-
+                    Prac.Start();
                     break;
 
                 case 3:
