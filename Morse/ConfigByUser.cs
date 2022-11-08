@@ -21,9 +21,14 @@ namespace Morse
             Console.WriteLine("Délka odmlčení po znaku: "+Config.delkaLomeno+"ms [4]");
             Console.WriteLine("Délka odmlčení po mezeře: " + Config.delkaMezera+"ms [5]");
             Console.WriteLine("Frekvence pípání: " + Config.frekvencePipani + "hz [6]");
+            Console.WriteLine();
+            Console.WriteLine("Reset [9]");
+            Console.WriteLine("Zpět [0]");
+
            string volba = Console.ReadLine();
             int volbaInt;
-
+            int test;
+            string vstup;
             if (int.TryParse(volba,out volbaInt))
             {
                 volbaInt=Convert.ToInt32(volba);
@@ -34,8 +39,13 @@ namespace Morse
 
             switch (volbaInt)
             {
+                
                 default:
                     Start();
+                    break;
+
+                    case 0:
+                    Program.Menu();
                     break;
 
                 case 1:
@@ -44,9 +54,105 @@ namespace Morse
                     break;
 
                 case 2:
-                    BT("Zadej hodnotu:", ConsoleColor.DarkRed);
+                    Console.Clear();
+                    BT("Zadej hodnotu délky pípnutí tečky \".\":", ConsoleColor.DarkRed);
+                    
+                     vstup = Console.ReadLine();
+
+                    if (int.TryParse(vstup, out test))
+                    {
+
+                        if (Convert.ToInt32(vstup) < 0)
+                        {
+                            vstup =Convert.ToString( Convert.ToInt32(vstup) *-1);
+                        }
+
+                        ConfigByUserWrite(1, vstup.ToString());
+                    }
+                    Start();
                     break;
-                   
+
+                case 3:
+                    Console.Clear();
+                    BT("Zadej hodnotu délky pípnutí čárky \"-\": ", ConsoleColor.DarkRed);
+
+                     vstup = Console.ReadLine();
+
+                    if (Convert.ToInt32(vstup) < 0)
+                    {
+                        vstup = Convert.ToString(Convert.ToInt32(vstup) *-1);
+                    }
+
+                    if (int.TryParse(vstup, out test))
+                    {
+                        ConfigByUserWrite(2, vstup.ToString());
+                    }
+                    Start();
+                    break;
+
+                case 4:
+                    Console.Clear();
+                    BT("Zadej hodnotu odmlčení mezi znaky v ms:", ConsoleColor.DarkRed);
+
+                    vstup = Console.ReadLine();
+
+                    if (Convert.ToInt32(vstup) < 0)
+                    {
+                        vstup = Convert.ToString(Convert.ToInt32(vstup) *-1);
+                    }
+
+                    if (int.TryParse(vstup, out test))
+                    {
+                        ConfigByUserWrite(3, vstup.ToString());
+                    }
+                    Start();
+                    break;
+
+                case 5:
+                    Console.Clear();
+                    BT("Zadej hodnotu délky mezery v ms:", ConsoleColor.DarkRed);
+
+                    vstup = Console.ReadLine();
+
+                    if (Convert.ToInt32(vstup) < 0)
+                    {
+                        vstup = Convert.ToString(Convert.ToInt32(vstup) *-1);
+                    }
+
+                    if (int.TryParse(vstup, out test))
+                    {
+                        ConfigByUserWrite(4, vstup.ToString());
+                    }
+                    Start();
+                    break;
+
+                case 6:
+                    Console.Clear();
+                    BT("Zadej hodnotu pro frekvenciv hz (37-1258):", ConsoleColor.DarkRed);
+
+                    vstup = Console.ReadLine();
+
+                    if (int.TryParse(vstup, out test))
+                    {
+                        int tmp = int.Parse(vstup);
+                        
+                        if (tmp > 36 && tmp < 1259)
+                        {
+                            ConfigByUserWrite(5, vstup.ToString());
+                        }
+                    }
+                    Start();
+                    break;
+
+                case 9:
+                    Console.Clear();
+                    Config.DefaultConfig();
+                    Start();
+                    break;
+
+                
+
+
             }
 
 
@@ -82,6 +188,9 @@ namespace Morse
 
         public static void BT(string txt, ConsoleColor barva)
         {
+            Console.ForegroundColor = barva;
+            Console.WriteLine(txt);
+            Console.ForegroundColor=ConsoleColor.White;
 
         }
 
