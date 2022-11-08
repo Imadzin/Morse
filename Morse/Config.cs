@@ -9,6 +9,8 @@
         public static int delkaMezera;
         public static int frekvencePipani;
 
+        public static string prikazZpet = "\\back";
+
         public static void DefaultConfig()
         {
             ConfigWrite("true".ToString(), false);

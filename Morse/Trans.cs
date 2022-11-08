@@ -26,6 +26,10 @@ namespace Morse
 
             char prvniPismeno = txt[0];
 
+            if (txt == Config.prikazZpet)
+            {
+                Program.Menu();
+            }
 
 
             if (prvniPismeno == '.' || prvniPismeno == '-')

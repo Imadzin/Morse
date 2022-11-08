@@ -1,4 +1,6 @@
-﻿namespace Morse
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace Morse
 {
     internal class Prac
     {
@@ -41,6 +43,11 @@
             Console.WriteLine();
             string vstup = Console.ReadLine().ToLower();
 
+            if (vstup == Config.prikazZpet)
+            {
+                Program.Menu();
+            }
+
             if (vstup == Dic.M_abeceda[index])
             {
 
@@ -61,6 +68,7 @@
 
             int index = rnd.Next(0, 43);
 
+            
             if (Dic.M_abeceda[index] == "")
             {
                 PZMorse();
@@ -70,6 +78,11 @@
             Beeper.Pipani(Dic.M_abeceda[index]);
             Console.WriteLine();
             string vstup = Console.ReadLine();
+
+            if (vstup == Config.prikazZpet)
+            {
+                Program.Menu();
+            }
 
             if (vstup == Dic.N_abeceda[index])
             {
