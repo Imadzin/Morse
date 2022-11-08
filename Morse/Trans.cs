@@ -66,46 +66,33 @@ namespace Morse
 
         public static void DoMorse(string txt)
         {
-
             string output = "";
-            Console.WriteLine();
-
-
 
             for (int i = 0; i < txt.Length; i++)
             {
-                int index = -1;
-
                 string fragment = txt[i].ToString();
 
-                if (fragment == "c" && txt[i + 1] == 'h')
-                {
-                    index++;
-                    Console.WriteLine("----");
+                int index = Array.IndexOf(Dic.N_abeceda, fragment);
+
+                if (txt.Length - i > 1) {
+                    string lookahead = txt[i + 1].ToString();
+
+                    if (Dic.N_abeceda.Contains(fragment + lookahead))
+                    {
+                        index = Array.IndexOf(Dic.N_abeceda, fragment + lookahead);
+                        i++;
+                    }
                 }
 
-                do
-                {
-                    i++;
-                } while (fragment != Dic.N_abeceda[index]);
-
-                Console.Write(Dic.M_abeceda[index]);
-                output += Dic.M_abeceda[index];
-                Console.Write("/");
-                output += "/";
+                output += Dic.M_abeceda[index] + "/";
             }
 
-
-
-            Console.WriteLine("//");
+            Console.WriteLine(output + "//");
             Beeper.Pipani(output);
-
 
             Console.ReadKey();
             Start();
 
         }
-
-
     }
 }
