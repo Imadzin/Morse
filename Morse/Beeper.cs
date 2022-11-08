@@ -12,7 +12,7 @@
 
 
 
-                do
+                while (index != kod.Length)
                 {
 
                     if (kod[index] == '-')
@@ -50,7 +50,7 @@
                     index++;
 
 
-                } while (index != kod.Length);
+                }
 
             }
         }

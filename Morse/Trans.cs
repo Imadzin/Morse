@@ -52,7 +52,6 @@ namespace Morse
             for (var i = 0; i < letters.Length; i++)
             {
                 int index = Array.IndexOf(Dic.M_abeceda, letters[i]);
-
                 if (index == -1) continue;
 
                 output += Dic.N_abeceda[index];
@@ -73,6 +72,7 @@ namespace Morse
                 string fragment = txt[i].ToString();
 
                 int index = Array.IndexOf(Dic.N_abeceda, fragment);
+                if (index == -1) continue;
 
                 if (txt.Length - i > 1) {
                     string lookahead = txt[i + 1].ToString();
