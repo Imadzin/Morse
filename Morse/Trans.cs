@@ -78,6 +78,12 @@ namespace Morse
 
                 string fragment = txt[i].ToString();
 
+                if (fragment == "c" && txt[i + 1] == 'h')
+                {
+                    index++;
+                    Console.WriteLine("----");
+                }
+
                 do
                 {
                     index++;
