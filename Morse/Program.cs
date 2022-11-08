@@ -55,7 +55,7 @@
                     break;
 
                 case 3:
-
+                    ConfigByUser.Start();
                     break;
 
 
