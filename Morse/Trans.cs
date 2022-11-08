@@ -86,7 +86,7 @@ namespace Morse
 
                 do
                 {
-                    index++;
+                    i++;
                 } while (fragment != Dic.N_abeceda[index]);
 
                 Console.Write(Dic.M_abeceda[index]);
