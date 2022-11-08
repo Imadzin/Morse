@@ -6,6 +6,7 @@
         {
             while (true)
             {
+                Console.Title = "Morseovka v1.0.0";
                 Config.ConfigTest();
                 Config.ConfigLoad();
                 Menu();
