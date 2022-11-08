@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-
-namespace Morse
+﻿namespace Morse
 {
     internal class Beeper
     {
@@ -16,48 +9,48 @@ namespace Morse
             if (Config.pipani == true)
             {
 
-            
 
 
-            do
-            {
 
-                if (kod[index] == '-')
+                do
                 {
-                    Console.Beep(Config.frekvencePipani, Config.delkaPipnutiCarka);
-                }
-                else if (kod[index] == '.')
-                {
-                    Console.Beep(Config.frekvencePipani, Config.delkaPipnutiTecka);
-                }
-                else
-                {
-                    if (index+1 != kod.Length)
+
+                    if (kod[index] == '-')
                     {
-                        if (kod[index + 1] == '/')
+                        Console.Beep(Config.frekvencePipani, Config.delkaPipnutiCarka);
+                    }
+                    else if (kod[index] == '.')
+                    {
+                        Console.Beep(Config.frekvencePipani, Config.delkaPipnutiTecka);
+                    }
+                    else
+                    {
+                        if (index + 1 != kod.Length)
                         {
-                            Thread.Sleep(Config.delkaMezera);
+                            if (kod[index + 1] == '/')
+                            {
+                                Thread.Sleep(Config.delkaMezera);
+                            }
+                            else
+                            {
+                                Thread.Sleep(Config.delkaLomeno);
+                            }
                         }
                         else
                         {
                             Thread.Sleep(Config.delkaLomeno);
                         }
-                    }
-                    else
-                    {
-                        Thread.Sleep(Config.delkaLomeno);
-                    }
 
 
-                }
+                    }
 
 
 
 
                     index++;
-                
 
-            }while (index !=kod.Length);
+
+                } while (index != kod.Length);
 
             }
         }

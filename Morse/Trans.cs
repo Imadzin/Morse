@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using System.Threading.Tasks;
-using Diacritics.Extensions;
+﻿using Diacritics.Extensions;
 
 
 
@@ -28,7 +22,7 @@ namespace Morse
             {
                 Start();
             }
-              
+
 
             char prvniPismeno = txt[0];
 
@@ -55,8 +49,8 @@ namespace Morse
             {
                 int index = Array.IndexOf(Dic.M_abeceda, letters[i]);
 
-                if (index == -1) continue; 
-                    
+                if (index == -1) continue;
+
                 output += Dic.N_abeceda[index];
             }
 
@@ -74,7 +68,7 @@ namespace Morse
 
 
 
-            for(int i = 0; i < txt.Length; i++)
+            for (int i = 0; i < txt.Length; i++)
             {
                 int index = -1;
 
@@ -83,7 +77,7 @@ namespace Morse
                 do
                 {
                     index++;
-                }while(fragment != Dic.N_abeceda[index]);
+                } while (fragment != Dic.N_abeceda[index]);
 
                 Console.Write(Dic.M_abeceda[index]);
                 output += Dic.M_abeceda[index];
@@ -91,11 +85,11 @@ namespace Morse
                 output += "/";
             }
 
-           
+
 
             Console.WriteLine("//");
-             Beeper.Pipani(output);
-            
+            Beeper.Pipani(output);
+
 
             Console.ReadKey();
             Start();

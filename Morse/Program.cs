@@ -9,12 +9,12 @@
                 Config.ConfigTest();
                 Config.ConfigLoad();
                 Menu();
-            }   
+            }
         }
 
 
-       public static void Menu()
-       {
+        public static void Menu()
+        {
             Console.Clear();
             Console.WriteLine("Menu:");
             Console.WriteLine();
@@ -22,24 +22,25 @@
             Console.WriteLine("Procvičování [2]");
             Console.WriteLine("Nastavení    [3]");
             Výběr();
-       }
+        }
 
 
         public static void Výběr()
         {
 
-            string text =Convert.ToString( Console.ReadKey().KeyChar);
+            string text = Convert.ToString(Console.ReadKey().KeyChar);
             int ciselnyVyber;
 
-            if (int.TryParse(text, out ciselnyVyber)) 
+            if (int.TryParse(text, out ciselnyVyber))
             {
-            ciselnyVyber=Convert.ToInt32(text);
-            }else
+                ciselnyVyber = Convert.ToInt32(text);
+            }
+            else
                 Menu();
 
 
 
-                switch (ciselnyVyber)
+            switch (ciselnyVyber)
             {
                 default:
                     Menu();
@@ -54,7 +55,7 @@
                     break;
 
                 case 3:
-                    
+
                     break;
 
 

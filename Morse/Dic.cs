@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Morse
+﻿namespace Morse
 {
     public class Dic
     {
-       public static string[] N_abeceda = {
+        public static string[] N_abeceda = {
             "a",
             "b",
             "c",
@@ -48,8 +42,8 @@ namespace Morse
             ".",
             ",",
             "?",
-            "!", 
-            " ", 
+            "!",
+            " ",
             "'",
             "/",
             "(",
@@ -69,7 +63,7 @@ namespace Morse
 
         };
 
-       public static string[] M_abeceda={
+        public static string[] M_abeceda ={
             ".-",
             "-...",
             "-.-.",
@@ -127,7 +121,7 @@ namespace Morse
             ".--.-.",
             "..-.-",
             "--...-",
-          
+
 
         };
 

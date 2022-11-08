@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Morse
+﻿namespace Morse
 {
     internal class Config
-    { 
+    {
         public static bool pipani;
         public static int delkaPipnutiTecka; //ms
         public static int delkaPipnutiCarka; //ms
@@ -15,28 +9,28 @@ namespace Morse
         public static int delkaMezera;
         public static int frekvencePipani;
 
-        public static void DefaultConfig() 
-       {
-            ConfigWrite("true".ToString(),false);
-            ConfigWrite(200.ToString(),true); //delka pipnuti tecky
-            ConfigWrite(350.ToString(),true); //delka pipnuti carky
-            ConfigWrite(400.ToString(),true); // delka lomeno
+        public static void DefaultConfig()
+        {
+            ConfigWrite("true".ToString(), false);
+            ConfigWrite(200.ToString(), true); //delka pipnuti tecky
+            ConfigWrite(350.ToString(), true); //delka pipnuti carky
+            ConfigWrite(400.ToString(), true); // delka lomeno
             ConfigWrite(600.ToString(), true); //delka mezery
             ConfigWrite(650.ToString(), true); //frekvence
 
             // ConfigWrite(.ToString(), true);
 
             ConfigLoad();
-       }
+        }
 
-       public static void ConfigLoad()
+        public static void ConfigLoad()
         {
-            pipani =Convert.ToBoolean( ConfigRead(0));
-            delkaPipnutiTecka=Convert.ToInt32( ConfigRead(1));
-            delkaPipnutiCarka=Convert.ToInt32( ConfigRead(2));
-            delkaLomeno=Convert.ToInt32(ConfigRead(3));
-            delkaMezera=Convert.ToInt32( ConfigRead(4));
-            frekvencePipani=Convert.ToInt32( ConfigRead(5));
+            pipani = Convert.ToBoolean(ConfigRead(0));
+            delkaPipnutiTecka = Convert.ToInt32(ConfigRead(1));
+            delkaPipnutiCarka = Convert.ToInt32(ConfigRead(2));
+            delkaLomeno = Convert.ToInt32(ConfigRead(3));
+            delkaMezera = Convert.ToInt32(ConfigRead(4));
+            frekvencePipani = Convert.ToInt32(ConfigRead(5));
 
         }
 
@@ -50,7 +44,7 @@ namespace Morse
         }
 
 
-        public static void ConfigWrite(string txt,bool append)
+        public static void ConfigWrite(string txt, bool append)
         {
             using (StreamWriter sw = new StreamWriter("Config.txt", append))
             {
@@ -61,7 +55,7 @@ namespace Morse
 
         public static string ConfigRead(int line)
         {
-          return  File.ReadAllLines("Config.txt").Skip(line).Take(1).First();
+            return File.ReadAllLines("Config.txt").Skip(line).Take(1).First();
         }
 
 
