@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Morse
+﻿namespace Morse
 {
     internal class ConfigByUser
     {
@@ -16,19 +10,20 @@ namespace Morse
             Console.WriteLine("Nastavení:");
             Console.WriteLine();
             Console.WriteLine("Pípání - " + Config.pipani + " [1]");
-            Console.WriteLine("Délka pípnutí tečky: "+Config.delkaPipnutiTecka+"ms [2]");
-            Console.WriteLine("Délka pípnutí čárky: "+Config.delkaPipnutiCarka+"ms [3]");
-            Console.WriteLine("Délka odmlčení po znaku: "+Config.delkaLomeno+"ms [4]");
-            Console.WriteLine("Délka odmlčení po mezeře: " + Config.delkaMezera+"ms [5]");
+            Console.WriteLine("Délka pípnutí tečky: " + Config.delkaPipnutiTecka + "ms [2]");
+            Console.WriteLine("Délka pípnutí čárky: " + Config.delkaPipnutiCarka + "ms [3]");
+            Console.WriteLine("Délka odmlčení po znaku: " + Config.delkaLomeno + "ms [4]");
+            Console.WriteLine("Délka odmlčení po mezeře: " + Config.delkaMezera + "ms [5]");
             Console.WriteLine("Frekvence pípání: " + Config.frekvencePipani + "hz [6]");
             Console.WriteLine();
             Console.WriteLine("Reset [9]");
             Console.WriteLine("Zpět [0]");
 
-           string volba = Console.ReadLine();
+            string volba = Console.ReadLine();
             int volbaInt;
-            int test;
             string vstup;
+            int intVstup;
+
             if (int.TryParse(volba,out volbaInt))
             {
                 volbaInt=Convert.ToInt32(volba);
@@ -39,12 +34,12 @@ namespace Morse
 
             switch (volbaInt)
             {
-                
+
                 default:
                     Start();
                     break;
 
-                    case 0:
+                case 0:
                     Program.Menu();
                     break;
 
@@ -56,18 +51,12 @@ namespace Morse
                 case 2:
                     Console.Clear();
                     BT("Zadej hodnotu délky pípnutí tečky \".\":", ConsoleColor.DarkRed);
-                    
-                     vstup = Console.ReadLine();
 
-                    if (int.TryParse(vstup, out test))
+                    vstup = Console.ReadLine();
+
+                    if (int.TryParse(vstup, out intVstup))
                     {
-
-                        if (Convert.ToInt32(vstup) < 0)
-                        {
-                            vstup =Convert.ToString( Convert.ToInt32(vstup) *-1);
-                        }
-
-                        ConfigByUserWrite(1, vstup.ToString());
+                        ConfigByUserWrite(1, Math.Abs(intVstup).ToString());
                     }
                     Start();
                     break;
@@ -76,16 +65,11 @@ namespace Morse
                     Console.Clear();
                     BT("Zadej hodnotu délky pípnutí čárky \"-\": ", ConsoleColor.DarkRed);
 
-                     vstup = Console.ReadLine();
+                    vstup = Console.ReadLine();
 
-                    if (Convert.ToInt32(vstup) < 0)
+                    if (int.TryParse(vstup, out intVstup))
                     {
-                        vstup = Convert.ToString(Convert.ToInt32(vstup) *-1);
-                    }
-
-                    if (int.TryParse(vstup, out test))
-                    {
-                        ConfigByUserWrite(2, vstup.ToString());
+                        ConfigByUserWrite(2, Math.Abs(intVstup).ToString());
                     }
                     Start();
                     break;
@@ -96,14 +80,9 @@ namespace Morse
 
                     vstup = Console.ReadLine();
 
-                    if (Convert.ToInt32(vstup) < 0)
+                    if (int.TryParse(vstup, out intVstup))
                     {
-                        vstup = Convert.ToString(Convert.ToInt32(vstup) *-1);
-                    }
-
-                    if (int.TryParse(vstup, out test))
-                    {
-                        ConfigByUserWrite(3, vstup.ToString());
+                        ConfigByUserWrite(3, Math.Abs(intVstup).ToString());
                     }
                     Start();
                     break;
@@ -114,14 +93,9 @@ namespace Morse
 
                     vstup = Console.ReadLine();
 
-                    if (Convert.ToInt32(vstup) < 0)
+                    if (int.TryParse(vstup, out intVstup))
                     {
-                        vstup = Convert.ToString(Convert.ToInt32(vstup) *-1);
-                    }
-
-                    if (int.TryParse(vstup, out test))
-                    {
-                        ConfigByUserWrite(4, vstup.ToString());
+                        ConfigByUserWrite(4, Math.Abs(intVstup).ToString());
                     }
                     Start();
                     break;
@@ -132,14 +106,11 @@ namespace Morse
 
                     vstup = Console.ReadLine();
 
-                    if (int.TryParse(vstup, out test))
+                    if (int.TryParse(vstup, out intVstup))
                     {
-                        int tmp = int.Parse(vstup);
-                        
-                        if (tmp > 36 && tmp < 1259)
-                        {
-                            ConfigByUserWrite(5, vstup.ToString());
-                        }
+                        int tmp = Math.Clamp(Math.Abs(intVstup), 37, 1258);
+                       
+                        ConfigByUserWrite(5, tmp.ToString());
                     }
                     Start();
                     break;
@@ -150,7 +121,7 @@ namespace Morse
                     Start();
                     break;
 
-                
+
 
 
             }
@@ -162,23 +133,24 @@ namespace Morse
         public static void ConfigByUserWrite(int line, string txt)
         {
             string[] countOfLines = File.ReadAllLines("Config.txt");
-            
+
             using (StreamWriter SW = new StreamWriter("Config.txt"))
             {
 
                for (int currentLine = 0; currentLine <= countOfLines.Length-1; currentLine++)
                 {
-                   
 
-                   if (currentLine == line)
-                   {
+
+                    if (currentLine == line)
+                    {
                         SW.WriteLine(txt);
-                   }else
-                   {
-                        SW.WriteLine(countOfLines[currentLine]);
                    }
-                   
-                    
+                    else
+                    {
+                        SW.WriteLine(countOfLines[currentLine]);
+                    }
+
+
                 }
 
                 SW.Flush();
